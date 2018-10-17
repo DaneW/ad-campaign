@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import TemplateSelector from './components/templateSelector';
+import CampaignCreator from './components/campaignCreator';
 
 const API = {
   templates: "http://localhost:3000/api/v1/templates",
@@ -72,6 +73,8 @@ class App extends Component {
     return (
       <div>
         <TemplateSelector templateId={templateId} templates={templates} handleSelect={this.selectTemplate}/>
+        <CampaignCreator resources={resources} template={template} saveCampaign={this.saveCampaign} />
+        {template && <button disabled={!campaignId} onClick={this.publishCampaign}>Publish</button>}
       </div>
     );
   }
