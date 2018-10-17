@@ -1,0 +1,10 @@
+@startuml
+object Campaign
+object CampaignObjective
+object Template
+object Ad
+
+Campaign o-- Template
+Template <-- CampaignObjective
+Template <-- Ad: has many
+@enduml

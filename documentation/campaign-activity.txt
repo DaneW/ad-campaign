@@ -1,0 +1,18 @@
+@startuml
+start
+:Select Template;
+while (Edit default values?)
+  :Select value;
+endwhile
+if (Save campaign?) then (true)
+  :Save;
+  if (Publish campaign?) then (true)
+    :Publish;
+  else (false)
+    stop
+  endif
+else (false)
+  stop
+endif
+stop
+@enduml

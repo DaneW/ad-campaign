@@ -1,0 +1,9 @@
+@startuml
+
+User -> (Create Campaign)
+(Create Campaign) ..> (Select template)
+(Create Campaign) ..> (Edit default values)
+(Create Campaign) ..> (Save)
+(Create Campaign) ..> (Publish)
+
+@enduml
