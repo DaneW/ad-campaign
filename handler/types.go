@@ -47,3 +47,13 @@ func NewCampaign(c newCampaignRequest) (campaign model.Campaign, err error) {
 	}
 	return campaign, err
 }
+
+// Product represents the product object
+type Product struct {
+	Name        string `json:"Name"`
+	Description string `json:"Description"`
+	Image       string `json:"Image"`
+}
+
+// Products wraps the product array
+type Products []Product

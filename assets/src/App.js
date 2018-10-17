@@ -3,7 +3,7 @@ import TemplateSelector from './components/templateSelector';
 
 const API = {
   templates: "http://localhost:3000/api/v1/templates",
-  resources: "https://shoelace-dev-test.azurewebsites.net/api/UserProducts",
+  resources: "http://localhost:3000/api/v1/products",
   save: "http://localhost:3000/api/v1/campaigns/create",
   publish: id => `http://localhost:3000/api/v1/campaigns/${id}/publish`,
 }

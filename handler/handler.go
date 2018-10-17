@@ -107,3 +107,22 @@ func publishCampaignHandler(formatter *render.Render, repo campaignRepository) h
 		}
 	}
 }
+
+func getResourcesHandler(formatter *render.Render, repo campaignRepository) http.HandlerFunc {
+	return func(w http.ResponseWriter, req *http.Request) {
+		client := &http.Client{}
+		resp, err := client.Get("https://shoelace-dev-test.azurewebsites.net/api/UserProducts")
+		if err != nil {
+			formatter.JSON(w, http.StatusNotFound, "Unable to retrieve products")
+		}
+		defer resp.Body.Close()
+		body, _ := ioutil.ReadAll(resp.Body)
+		var products Products
+		err = json.Unmarshal(body, &products)
+		if err != nil {
+			formatter.Text(w, http.StatusBadRequest, "Failed to parse products request")
+			return
+		}
+		formatter.JSON(w, http.StatusOK, &products)
+	}
+}
