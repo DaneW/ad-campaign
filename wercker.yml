@@ -53,6 +53,8 @@ deploy:
    - internal/docker-push:
        username: $DOCKER_USERNAME
        password: $DOCKER_PASSWORD
-       cmd: /ad-campaign/source/ad-campaign
+       cmd: /pipeline/source/ad-campaign
+       working-dir: /pipeline/source/
+       port: "3000"
        tag: latest
        repository: danewilson/ad-campaign
