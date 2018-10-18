@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import AdEditor from './adEditor';
 
 class CampaignCreator extends Component {
   static propTypes = {
@@ -67,11 +68,13 @@ class CampaignCreator extends Component {
   }
 
   render() {
-    const { template } = this.props;
-    const { objective } = this.state;
+    const { template, resources } = this.props;
+    const { adTitle, adCopy, adImage, objective } = this.state;
     if (!template) return null;
     return (
       <form>
+        <AdEditor resources={resources} titles={adTitle} copies={adCopy} images={adImage} updateValue={this.handleUpdate}  />
+        <hr/>
         <div onChange={this.updateObjective}>
           <label><input type="radio" value="LeadGeneration" checked={objective === "LeadGeneration"} /> LeadGeneration</label>
           <label><input type="radio" value="Conversions" checked={objective === "Conversions"} /> Conversions</label>
