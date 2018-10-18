@@ -13,7 +13,7 @@ class AdEditor extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      valueModifier: -1,
+      valueModifier: [-1, -1, -1],
     };
   }
 
@@ -46,8 +46,10 @@ class AdEditor extends Component {
 
   changeValueModifier = (event, idx) => {
     const { resources } = this.props;
+    const { valueModifier: currModifier } = this.state;
     const i = event.target.value;
-    const valueModifier = i;
+    const valueModifier = [ ...currModifier ];
+    valueModifier[idx] = i;
     this.setState({ valueModifier });
     if (i < resources.length) {
       this.handleChange(resources[i].Name, "title", idx);
@@ -62,6 +64,11 @@ class AdEditor extends Component {
     return titles.map((_, idx) => (
       <div key={idx}>
         <hr/>
+        <select onChange={e => this.changeValueModifier(e, idx)} value={valueModifier[idx]}>
+          <option disabled value={-1}>Default</option>
+          {resources.map(({ Name }, i) => <option key={i} value={i}>{Name}</option>)}
+          <option value={resources.length}>Custom</option>
+        </select><br/>
         <label>Title: </label>
         <input 
           disabled={valueModifier[idx] !== resources.length + ""} 
