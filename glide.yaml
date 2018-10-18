@@ -1,0 +1,6 @@
+package: github.com/danew/ad-campaign
+import:
+- package: github.com/codegangsta/negroni
+- package: github.com/gorilla/mux
+- package: github.com/unrolled/render
+- package: github.com/google/uuid

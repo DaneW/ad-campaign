@@ -21,3 +21,16 @@ This section details the applications inner workings.
 
 ## Getting Started
 To run the application you need to run both the Campaign service and UI.   
+
+Run with Docker:   
+
+
+If you have go and node installed you can follow these instructions.
+
+1. `cd assets`
+2. `yarn`
+3. `yarn build`
+4. `cd ..`
+5. `go build`
+6. `./service`
+7. Visit [localhost:3000](http://localhost:3000)

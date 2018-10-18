@@ -1,7 +1,7 @@
 package handler
 
 import (
-	"github.com/danew/service/model"
+	"github.com/danew/ad-campaign/model"
 	"github.com/google/uuid"
 )
 

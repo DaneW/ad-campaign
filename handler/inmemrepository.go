@@ -4,7 +4,7 @@ import (
 	"errors"
 	"strings"
 
-	"github.com/danew/service/model"
+	"github.com/danew/ad-campaign/model"
 )
 
 type inMemoryRepository struct {

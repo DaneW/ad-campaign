@@ -72,6 +72,8 @@ class App extends Component {
     const templateId = template ? template.id : "default";
     return (
       <div>
+        <a href="http://localhost:3000/api/v1/templates">Campaign Templates</a>{' '}
+        <a href="http://localhost:3000/api/v1/campaigns/published">Published Campaigns</a><hr/>
         <TemplateSelector templateId={templateId} templates={templates} handleSelect={this.selectTemplate}/>
         <CampaignCreator resources={resources} template={template} saveCampaign={this.saveCampaign} />
         {template && <button disabled={!campaignId} onClick={this.publishCampaign}>Publish</button>}

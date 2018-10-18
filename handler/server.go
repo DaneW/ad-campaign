@@ -5,7 +5,7 @@ import (
 	"os"
 
 	"github.com/codegangsta/negroni"
-	"github.com/danew/service/model"
+	"github.com/danew/ad-campaign/model"
 	"github.com/google/uuid"
 	"github.com/gorilla/mux"
 	"github.com/unrolled/render"

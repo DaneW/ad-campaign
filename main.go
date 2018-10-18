@@ -3,7 +3,7 @@ package main
 import (
 	"os"
 
-	handler "github.com/danew/service/handler"
+	handler "github.com/danew/ad-campaign/handler"
 )
 
 func main() {
