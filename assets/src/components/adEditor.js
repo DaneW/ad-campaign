@@ -35,7 +35,7 @@ class AdEditor extends Component {
         property = 'adImage';
         break;
       default:
-        break;
+        return;
     }
     if (update && property) {
       const value = event.target ? event.target.value : event;
@@ -47,16 +47,29 @@ class AdEditor extends Component {
   changeValueModifier = (event, idx) => {
     const { resources } = this.props;
     const { valueModifier: currModifier } = this.state;
-    const i = event.target.value;
+    const index = event.target.value;
     const valueModifier = [ ...currModifier ];
-    valueModifier[idx] = i;
+    // Updating the current index
+    valueModifier[idx] = index;
     this.setState({ valueModifier });
-    if (i < resources.length) {
-      this.handleChange(resources[i].Name, "title", idx);
-      this.handleChange(resources[i].Description, "copy", idx);
-      this.handleChange(resources[i].Image, "image", idx);
+    if (index < resources.length) {
+      this.handleChange(resources[index].Name, "title", idx);
+      this.handleChange(resources[index].Description, "copy", idx);
+      this.handleChange(resources[index].Image, "image", idx);
     }
   };
+
+  renderList = idx => {
+    const { valueModifier } = this.state;
+    const { resources } = this.props;
+    return (
+      <select onChange={e => this.changeValueModifier(e, idx)} value={valueModifier[idx]}>
+        <option disabled value={-1}>Default</option>
+        {resources.map(({ Name }, i) => <option key={i} value={i}>{Name}</option>)}
+        <option value={resources.length}>Custom</option>
+      </select>
+    );
+  }
 
   renderEditors = () => {
     const { valueModifier } = this.state;
@@ -64,11 +77,7 @@ class AdEditor extends Component {
     return titles.map((_, idx) => (
       <div key={idx}>
         <hr/>
-        <select onChange={e => this.changeValueModifier(e, idx)} value={valueModifier[idx]}>
-          <option disabled value={-1}>Default</option>
-          {resources.map(({ Name }, i) => <option key={i} value={i}>{Name}</option>)}
-          <option value={resources.length}>Custom</option>
-        </select><br/>
+        {this.renderList(idx)}<br/>
         <label>Title: </label>
         <input 
           disabled={valueModifier[idx] !== resources.length + ""} 
